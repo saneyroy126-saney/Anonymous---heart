@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Anonymous Hearts 💗</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ffdce9,#eadcff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.card{
+  width:100%;
+  max-width:520px;
+  background:rgba(255,255,255,.96);
+  border-radius:28px;
+  padding:30px;
+  box-shadow:0 15px 45px rgba(160,70,130,.25);
+}
+
+.logo{
+  text-align:center;
+  font-size:58px;
+  margin-bottom:5px;
+}
+
+h1{
+  text-align:center;
+  color:#e83e8c;
+  font-size:32px;
+}
+
+.tagline{
+  text-align:center;
+  color:#777;
+  margin:8px 0 22px;
+}
+
+.info{
+  background:#fff0f6;
+  border-radius:14px;
+  padding:14px;
+  color:#666;
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:22px;
+}
+
+label.title{
+  display:block;
+  font-weight:bold;
+  color:#555;
+  margin-bottom:8px;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:14px;
+  margin-bottom:18px;
+  border:1px solid #ffd0e2;
+  border-radius:13px;
+  background:#fffafd;
+  font-size:15px;
+  outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:#ff5c9d;
+  box-shadow:0 0 0 3px rgba(255,92,157,.12);
+}
+
+textarea{
+  height:145px;
+  resize:vertical;
+}
+
+.question{
+  font-weight:bold;
+  color:#555;
+  margin-bottom:10px;
+}
+
+.options{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.option{
+  flex:1;
+  border:1px solid #ffd0e2;
+  border-radius:13px;
+  padding:12px;
+  text-align:center;
+  cursor:pointer;
+  color:#666;
+  background:#fffafd;
+}
+
+.option:hover{
+  background:#fff0f6;
+}
+
+.option input{
+  width:auto;
+  margin:0 5px 0 0;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:15px;
+  background:linear-gradient(90deg,#ff4f91,#c94be8);
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+.footer{
+  text-align:center;
+  color:#999;
+  font-size:12px;
+  margin-top:20px;
+}
+
+#success{
+  display:none;
+  text-align:center;
+}
+
+.success-heart{
+  font-size:60px;
+}
+
+#success h2{
+  color:#e83e8c;
+  margin:10px 0;
+}
+
+#success p{
+  color:#777;
+  line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div id="formPage">
+
+    <div class="logo">💗</div>
+
+    <h1>Anonymous Hearts</h1>
+
+    <p class="tagline">
+      Speak Your Heart. Stay Anonymous. 🤫💕
+    </p>
+
+    <div class="info">
+      💌 Share something you've been keeping inside.
+      Please don't include your phone number, address,
+      password, or other private information.
+    </div>
+
+    <form id="confessionForm">
+
+      <label class="title" for="name">
+        ✨ Name / Nickname
+      </label>
+
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter a nickname"
+        required
+      >
+
+      <label class="title" for="age">
+        🎂 Age Group
+      </label>
+
+      <select id="age" required>
+        <option value="">Select your age group</option>
+        <option value="Under 13">Under 13</option>
+        <option value="13-15">13–15</option>
+        <option value="16-17">16–17</option>
+        <option value="18+">18+</option>
+      </select>
+
+      <label class="title" for="confession">
+        💭 Your Confession
+      </label>
+
+      <textarea
+        id="confession"
+        placeholder="Write your heart out..."
+        maxlength="1000"
+        required
+      ></textarea>
+
+      <div class="question">
+        💗 Do you follow our page?
+      </div>
+
+      <div class="options">
+
+        <label class="option">
+          <input
+            type="radio"
+            name="follow"
+            value="Yes"
+            required
+          >
+          Yes ❤️
+        </label>
+
+        <label class="option">
+          <input
+            type="radio"
+            name="follow"
+            value="No"
+          >
+          No 🤍
+        </label>
+
+      </div>
+
+      <button type="submit">
+        💌 Send Confession
+      </button>
+
+    </form>
+
+  </div>
+
+
+  <div id="success">
+
+    <div class="success-heart">💗</div>
+
+    <h2>Thank You! 💌</h2>
+
+    <p>
+      Your confession has been received.<br>
+      Stay kind. Stay anonymous. 💕
+    </p>
+
+    <br>
+
+    <button onclick="newConfession()">
+      ✍️ Send Another
+    </button>
+
+  </div>
+
+  <div class="footer">
+    Anonymous Hearts © 2026
+  </div>
+
+</div>
+
+
+<script>
+
+const form = document.getElementById("confessionForm");
+const formPage = document.getElementById("formPage");
+const success = document.getElementById("success");
+
+form.addEventListener("submit", function(event){
+
+  event.preventDefault();
+
+  formPage.style.display = "none";
+  success.style.display = "block";
+
+});
+
+function newConfession(){
+
+  form.reset();
+
+  success.style.display = "none";
+  formPage.style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
